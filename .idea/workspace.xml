@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bbbeda7b-21e1-483a-b154-10b84486e13c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/FFCountriesController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/FFCountriesController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/FFFlightsController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/FFFlightsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/web.php" afterPath="$PROJECT_DIR$/routes/web.php" />
-    </list>
+    <list default="true" id="bbbeda7b-21e1-483a-b154-10b84486e13c" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -70,8 +66,8 @@
       <file leaf-file-name="adminCore.blade.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/admin/adminCore.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+            <state relative-caret-position="340">
+              <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
               <folding>
                 <marker date="1502190294017" expanded="true" signature="57:73" ph="..." />
                 <marker date="1502190294017" expanded="true" signature="118:132" ph="..." />
@@ -487,12 +483,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1502176339837</updated>
-      <workItem from="1502176341173" duration="14371000" />
+      <workItem from="1502176341173" duration="14638000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14371000" />
+    <option name="totallyTimeSpent" value="14638000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1932" height="1056" extended-state="0" />
@@ -682,8 +678,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/adminCore.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="14" lean-forward="true" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        <state relative-caret-position="340">
+          <caret line="20" column="7" lean-forward="true" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="7" />
           <folding>
             <marker date="1502190294017" expanded="true" signature="57:73" ph="..." />
             <marker date="1502190294017" expanded="true" signature="118:132" ph="..." />
