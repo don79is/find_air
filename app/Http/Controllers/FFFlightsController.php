@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\FFFlights;
 use Illuminate\Routing\Controller;
 
 class FFFlightsController extends Controller {
@@ -10,9 +11,17 @@ class FFFlightsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function adminIndex()
 	{
-		//
+        $conf['list'] = FFFlights::all()->toArray();
+
+        $conf ['new'] = route('app.flights.create');
+        $conf ['title'] = trans('app.flights');
+        $conf['create'] = 'app.flights.create';
+        $conf['edit'] = 'app.flights.edit';
+        $conf['delete'] = 'app.flights.delete';
+
+        return view('admin.adminList', $conf);
 	}
 
 	/**
