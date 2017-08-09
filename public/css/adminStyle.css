@@ -1,0 +1,12 @@
+html, body {
+    height: 100%;
+}
+#list{
+    border: red solid 2px;
+    margin-left: 300px;
+
+}
+
+#list tr {
+    padding-left: 20px;
+}
