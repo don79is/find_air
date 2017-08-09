@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\FFAirlines;
 use Illuminate\Routing\Controller;
 
 class FFAirlinesController extends Controller {
@@ -10,9 +11,18 @@ class FFAirlinesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function adminIndex()
 	{
-		//
+        $conf['list'] = FFAirlines::get()->toArray();
+        $conf ['rec'] = route('app.airlines.create');
+        $conf ['title'] = trans('app.airlines');
+        $conf['ignore'] = ['updated_at','created_at','deleted_at'];
+        $conf['show'] = 'app.airlines.show';
+        $conf['create'] = 'app.airlines.create';
+        $conf['edit'] = 'app.airlines.edit';
+        $conf['delete'] = 'app.airlines.delete';
+
+        return view('admin.adminList', $conf);
 	}
 
 	/**

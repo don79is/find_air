@@ -15,7 +15,7 @@ class FFFlightsController extends Controller {
 	{
         $conf['list'] = FFFlights::all()->toArray();
 
-        $conf ['new'] = route('app.flights.create');
+        $conf ['rec'] = route('app.flights.create');
         $conf ['title'] = trans('app.flights');
         $conf['create'] = 'app.flights.create';
         $conf['edit'] = 'app.flights.edit';

@@ -13,8 +13,14 @@ class FFCountriesController extends Controller {
 	 */
 	public function adminIndex()
 	{
-	    $conf['list'] = FFCountries::all()->toArray();
-
+	    $conf['list'] = FFCountries::get()->toArray();
+	    $conf['ignore'] = ['updated_at','created_at','deleted_at'];
+        $conf ['rec'] = route('app.countries.create');
+        $conf ['title'] = trans('app.countries');
+        $conf['show'] = 'app.countries.show';
+        $conf['create'] = 'app.countries.create';
+        $conf['edit'] = 'app.countries.edit';
+        $conf['delete'] = 'app.countries.delete';
 
         return view('admin.adminList', $conf);
 	}
