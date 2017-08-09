@@ -37,15 +37,15 @@ Route::group(['prefix' => 'flights'], function () {
         Route::delete('/', ['as' => 'app.flights.delete', 'uses' => 'FFFlightsController@adminDestroy']);
     });
 });
-Route::group(['prefix' => 'aiports'], function () {
-    Route::get('/', ['as' => 'app.aiports.index', 'uses' => 'FFAirportsController@adminIndex']);
-    Route::get('/create', ['as' => 'app.aiports.create', 'uses' => 'FFAirportsController@adminCreate']);
-    Route::post('/create', ['as' => 'app.aiports.store', 'uses' => 'FFAirportsController@adminStore']);
+Route::group(['prefix' => 'airports'], function () {
+    Route::get('/', ['as' => 'app.airports.index', 'uses' => 'FFAirportsController@adminIndex']);
+    Route::get('/create', ['as' => 'app.airports.create', 'uses' => 'FFAirportsController@adminCreate']);
+    Route::post('/create', ['as' => 'app.airports.store', 'uses' => 'FFAirportsController@adminStore']);
     Route::group(['prefix' => '{id}'], function () {
-        Route::get('/edit', ['as' => 'app.aiports.edit', 'uses' => 'FFAirportsController@adminEdit']);
-        Route::post('/edit', ['as' => 'app.aiports.update', 'uses' => 'FFAirportsController@adminUpdate']);
-        Route::get('/', ['as' => 'app.aiports.show', 'uses' => 'FFAirportsController@adminShow']);
-        Route::delete('/', ['as' => 'app.aiports.delete', 'uses' => 'FFAirportsController@adminDestroy']);
+        Route::get('/edit', ['as' => 'app.airports.edit', 'uses' => 'FFAirportsController@adminEdit']);
+        Route::post('/edit', ['as' => 'app.airports.update', 'uses' => 'FFAirportsController@adminUpdate']);
+        Route::get('/', ['as' => 'app.airports.show', 'uses' => 'FFAirportsController@adminShow']);
+        Route::delete('/', ['as' => 'app.airports.delete', 'uses' => 'FFAirportsController@adminDestroy']);
     });
 });
 Route::group(['prefix' => 'airlines'], function () {
