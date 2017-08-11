@@ -16,7 +16,7 @@ class FFCountriesController extends Controller {
 	    $conf['list'] = FFCountries::get()->toArray();
 	    $conf['ignore'] = ['updated_at','created_at','deleted_at'];
         $conf ['rec'] = route('app.countries.create');
-        $conf ['title'] = trans('app.countries');
+        $conf ['title'] = ('Countries');
         $conf['show'] = 'app.countries.show';
         $conf['create'] = 'app.countries.create';
         $conf['edit'] = 'app.countries.edit';

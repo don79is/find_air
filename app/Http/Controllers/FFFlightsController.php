@@ -1,6 +1,9 @@
 <?php namespace App\Http\Controllers;
 
+use App\Models\FFAirlines;
+use App\Models\FFAirports;
 use App\Models\FFFlights;
+use Carbon\Carbon;
 use Illuminate\Routing\Controller;
 
 class FFFlightsController extends Controller {
@@ -13,10 +16,11 @@ class FFFlightsController extends Controller {
 	 */
 	public function adminIndex()
 	{
-        $conf['list'] = FFFlights::all()->toArray();
+        $conf['list'] = FFFlights::get()->toArray();
 
-        $conf ['rec'] = route('app.flights.create');
-        $conf ['title'] = trans('app.flights');
+        $conf ['title'] = ('Airlines');
+        $conf['ignore'] = ['created_at', 'updated_at', 'deleted_at', 'id', 'count', 'airline_id', 'destintation_id', 'orgin_id' ];
+        $conf['rec'] = route('app.flights.create');
         $conf['create'] = 'app.flights.create';
         $conf['edit'] = 'app.flights.edit';
         $conf['delete'] = 'app.flights.delete';
@@ -30,9 +34,17 @@ class FFFlightsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function adminCreate()
 	{
-		//
+        $conf['title'] = 'New Flights';
+        $conf['rec'] = route('app.flights.create');
+        $conf['origin'] = FFAirports::pluck('name', 'id')->toArray();
+        $conf['destination'] = FFAirports::pluck('name', 'id')->toArray();
+        $conf['airline'] = FFAirlines::pluck('name', 'id')->toArray();
+        $conf['departure'] = Carbon::now()->format('Y-m-d H:i');
+        $conf['arrival'] = Carbon::now()->addDays(1)->format('Y-m-d H:i');
+        $conf['back'] = 'app.flights.index';
+        return view('admin.flights.form', $conf);
 	}
 
 	/**
@@ -41,9 +53,18 @@ class FFFlightsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function adminStore()
 	{
-		//
+        $data = request()->all();
+//        dd($data);
+        FFFlights::create([
+            'origin_id' => $data['origin'],
+            'destination_id' => $data['destination'],
+            'airline_id' => $data['airline'],
+            'departure' => $data['departure'],
+            'arival' => $data['arrival'],
+        ]);
+        return redirect(route('app.flights.index'));
 	}
 
 	/**

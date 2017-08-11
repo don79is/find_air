@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 use App\Models\FFAirports;
+use App\Models\FFCountries;
 use Illuminate\Routing\Controller;
 
 class FFAirportsController extends Controller {
@@ -31,9 +32,13 @@ class FFAirportsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function adminCreate()
 	{
-		//
+        $conf['title'] = 'New Airport';
+        $conf['country'] = FFCountries::pluck('name', 'id')->toArray();
+        $conf['rec'] = route('app.airports.create');
+        $conf['back'] = 'app.airports.index';
+        return view('admin.airports.form', $conf);
 	}
 
 	/**
@@ -42,9 +47,15 @@ class FFAirportsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function adminStore()
 	{
-		//
+            $data = request()->all();
+            FFAirports::create([
+                'name' => $data['name'],
+                'city' => $data['city'],
+                'country_id' => $data['country_id']
+            ]);
+            return redirect(route('app.airports.index'));
 	}
 
 	/**
