@@ -87,7 +87,6 @@
         {{Form::select('destination',$destination)}}<br>
 
 
-
         {{Form::label('departure', 'Time')}}
         {{Form::datetime('departure', $time)}}<br>
 
@@ -96,7 +95,12 @@
         {{--{{Form::datetime('arrival', $arrival)}}--}}
 
     </div>
+    @if(isset($flights))
+        @foreach($flights as $key )
+            {{$key}}
 
+        @endforeach
+    @endif
 </div>
 </body>
 </html>

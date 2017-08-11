@@ -30,9 +30,10 @@
 
 
         </div>
-        <a class="btn btn-primary" href="{{$back}}">Back</a>
-        {{Form::submit(('Save'), ['class' => 'btn btn-success']) }}
     @endif
+    <a class="btn btn-primary" href="{{$back}}">Back</a>
+    {{Form::submit(('Save'), ['class' => 'btn btn-success']) }}
+
 
 
 
