@@ -1,10 +1,11 @@
 <div id="menu">
-    <h2>{{trans('app.admin_side_bar')}}</h2>
-    <ul>
+    <h2>Menu</h2>
+    <nav class="nav flex-column">
 
-        <li><a href="{{route('app.countries.index')}}">{{trans('app.countries')}}</a></li>
-        <li><a href="{{route('app.airlines.index')}}">{{trans('app.airlines')}}</a></li>
-        <li><a href="{{route('app.airports.index')}}">{{trans('app.airports')}}</a></li>
-        <li><a href="{{route('app.flights.index')}}">{{trans('app.flights')}}</a></li>
-    </ul>
+        <a href="{{route('app.countries.index')}}">Countries</a></li>
+        <a href="{{route('app.airlines.index')}}">Airlines</a></li>
+        <a href="{{route('app.airports.index')}}">Airports</a></li>
+        <a href="{{route('app.flights.index')}}">Flights</a></li>
+
+    </nav>
 </div>

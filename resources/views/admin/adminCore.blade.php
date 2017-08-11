@@ -4,15 +4,15 @@
     @include('admin.adminCss')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
-    <title>{{trans('app.title')}}</title>
+    <title>Find Air</title>
     <link href="/css/app.css" rel=stylesheet>
 </head>
 <body>
 @include('admin.adminMenu')
-
+<div class="container">
 @yield('content')
+</div>
 
-@yield('list')
 {{--@yield('form')--}}
 </body>
 

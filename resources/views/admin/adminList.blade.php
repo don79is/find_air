@@ -1,10 +1,10 @@
 @extends('admin.adminCore')
 
-@section('list')
+@section('content')
     <div id="list">
         {{$title}}<br>
         <a href="{{$rec}}" class="btn btn-primary" role="button">
-            {{trans('app.rec')}}</a>
+            New Record</a>
         <hr/>
         @if(sizeof($list)>0)
         <table class="table">
@@ -16,10 +16,10 @@
                     @endif
                 @endforeach
                 @if(isset($edit))
-                    <th> {{ trans('app.edit') }}</th>
+                    <th> Edit</th>
                 @endif
                 @if(isset($delete))
-                    <th> {{ trans('app.delete') }}</th>
+                    <th> Delete</th>
                 @endif
             </tr>
             </thead>
@@ -35,16 +35,16 @@
 
                     <td>
                         <a class="btn btn-info"
-                           href="{{ route($edit, $record['id']) }}">{{ trans('app.edit') }}</a></td>
+                           href="{{ route($edit, $record['id']) }}">Edit</a></td>
                     <td>
                         <button class="btn btn-danger"
-                                onclick="deleteItem('{{route( $delete, $record['id'])}}')">{{ trans('app.delete') }}</button>
+                                onclick="deleteItem('{{route( $delete, $record['id'])}}')">Delete</button>
                     </td>
 
                 </tr>
             @endforeach
         </table>
-        @else {{trans('app.no-data')}}
+        @else {{'No records'}}
 
         @endif
     </div>

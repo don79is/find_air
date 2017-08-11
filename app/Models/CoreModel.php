@@ -17,4 +17,5 @@ class CoreModel extends Model
      * @var bool
      */
     public $incrementing = false;
+
 }
