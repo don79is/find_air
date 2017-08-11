@@ -53,6 +53,7 @@ class FFAirportsController extends Controller {
             FFAirports::create([
                 'name' => $data['name'],
                 'city' => $data['city'],
+                'id' => $data['id'],
                 'country_id' => $data['country_id']
             ]);
             return redirect(route('app.airports.index'));

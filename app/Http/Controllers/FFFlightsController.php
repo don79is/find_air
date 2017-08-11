@@ -18,7 +18,7 @@ class FFFlightsController extends Controller {
 	{
         $conf['list'] = FFFlights::get()->toArray();
 
-        $conf ['title'] = ('Airlines');
+        $conf ['title'] = ('Flights');
         $conf['ignore'] = ['created_at', 'updated_at', 'deleted_at', 'id', 'count', 'airline_id', 'destintation_id', 'orgin_id' ];
         $conf['rec'] = route('app.flights.create');
         $conf['create'] = 'app.flights.create';
@@ -44,6 +44,7 @@ class FFFlightsController extends Controller {
         $conf['departure'] = Carbon::now()->format('Y-m-d H:i');
         $conf['arrival'] = Carbon::now()->addDays(1)->format('Y-m-d H:i');
         $conf['back'] = 'app.flights.index';
+
         return view('admin.flights.form', $conf);
 	}
 

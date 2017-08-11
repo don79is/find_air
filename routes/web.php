@@ -14,6 +14,11 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['prefix' => 'search'], function () {
+    Route::get('/', ['as' => 'app.search.index', 'uses' => 'FFSearchController@adminIndex']);
+    Route::get('/create', ['as' => 'app.search.create', 'uses' => 'FFSearchController@adminCreate']);
+    Route::post('/create', ['as' => 'app.search.store', 'uses' => 'FFSearchController@adminStore']);
+});
 
 Route::group(['prefix' => 'countries'], function () {
     Route::get('/', ['as' => 'app.countries.index', 'uses' => 'FFCountriesController@adminIndex']);

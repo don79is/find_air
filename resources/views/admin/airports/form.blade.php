@@ -7,6 +7,8 @@
         <div class="form-group">
             {{Form::label('name', 'Airport name')}}
             {{Form::text('name', $record['name'])}}
+            {{Form::label('name', 'Airport id')}}
+            {{Form::text('name', $record['id'])}}
             {{Form::label('city', 'City')}}
             {{Form::text('city', $record['city'])}}
             {{Form::label('country_id', 'Country name')}}
@@ -21,6 +23,8 @@
             {{Form::text('name')}}<br>
             {{Form::label('city', 'City')}}
             {{Form::text('city')}}<br>
+            {{Form::label('id', 'id')}}
+            {{Form::text('id')}}<br>
             {{Form::label('country_id', 'Country name')}}
             {{Form::select('country_id',$country)}}
 

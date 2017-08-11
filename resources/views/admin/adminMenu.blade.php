@@ -8,4 +8,5 @@
         <a href="{{route('app.flights.index')}}">Flights</a></li>
 
     </nav>
+    <a href="{{route('app.search.index')}}">Serach</a></li>
 </div>
