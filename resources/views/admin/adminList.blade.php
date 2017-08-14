@@ -7,43 +7,56 @@
             New Record</a>
         <hr/>
         @if(sizeof($list)>0)
-        <table class="table">
-            <thead class="thead-inverse">
-            <tr>
-                @foreach($list[0] as $key => $value)
-                    @if(!in_array($key, $ignore))
-                        <th>{{$key}}</th>
-                    @endif
-                @endforeach
-                @if(isset($edit))
-                    <th> Edit</th>
-                @endif
-                @if(isset($delete))
-                    <th> Delete</th>
-                @endif
-            </tr>
-            </thead>
-            @foreach($list as $key => $record)
-                <tr id="{{$record['id']}}">
-                    @foreach($record as $key => $value)
+            <table class="table">
+                <thead class="thead-inverse">
+                <tr>
+                    @foreach($list[0] as $key => $value)
                         @if(!in_array($key, $ignore))
-                            <td>
-                                {{$value}}
-                            </td>
+                            <th>{{$key}}</th>
                         @endif
                     @endforeach
-
-                    <td>
-                        <a class="btn btn-info"
-                           href="{{ route($edit, $record['id']) }}">Edit</a></td>
-                    <td>
-                        <button class="btn btn-danger"
-                                onclick="deleteItem('{{route( $delete, $record['id'])}}')">Delete</button>
-                    </td>
-
+                    @if(isset($edit))
+                        <th> Edit</th>
+                    @endif
+                    @if(isset($delete))
+                        <th> Delete</th>
+                    @endif
                 </tr>
-            @endforeach
-        </table>
+                </thead>
+                @foreach($list as $key => $record)
+                    <tr id="{{$record['id']}}">
+                        @foreach($record as $key => $value)
+                            @if(!in_array($key, $ignore))
+                                @if($key == 'origin_airport')
+                                    <td>
+                                        {{$value['name']}}(Airport),
+                                    </td>
+                                @elseif($key == 'destination_airport')
+                                    <td>
+                                        {{$value['name']}}(Airport),
+                                    </td>
+                                @elseif($key == 'airline')
+                                    <td>{{$value['name']}}</td>
+                                @else
+                                    <td>
+                                        {{$value}}
+                                    </td>
+                                @endif
+                            @endif
+                        @endforeach
+
+                        <td>
+                            <a class="btn btn-info"
+                               href="{{ route($edit, $record['id']) }}">Edit</a></td>
+                        <td>
+                            <button class="btn btn-danger"
+                                    onclick="deleteItem('{{route( $delete, $record['id'])}}')">Delete
+                            </button>
+                        </td>
+
+                    </tr>
+                @endforeach
+            </table>
         @else {{'No records'}}
 
         @endif
