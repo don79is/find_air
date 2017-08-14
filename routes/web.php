@@ -17,6 +17,10 @@ Route::get('/', function () {
 Route::group(['prefix' => 'search'], function () {
     Route::get('/', ['as' => 'app.search.index', 'uses' => 'FFSearchController@adminIndex']);
 });
+Route::group(['prefix' => 'generate'], function () {
+    Route::get('/airports', ['uses' => 'FFFakerController@generateAirports']);
+    Route::get('/flights', ['uses' => 'FFFakerController@generateFlights']);
+});
 
 Route::group(['prefix' => 'countries'], function () {
     Route::get('/', ['as' => 'app.countries.index', 'uses' => 'FFCountriesController@adminIndex']);
