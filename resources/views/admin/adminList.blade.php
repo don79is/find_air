@@ -46,7 +46,7 @@
                         @endforeach
 
                         <td>
-                            <a class="btn btn-info"
+                            <a class="btn btn-success"
                                href="{{ route($edit, $record['id']) }}">Edit</a></td>
                         <td>
                             <button class="btn btn-danger"

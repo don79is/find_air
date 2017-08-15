@@ -5,14 +5,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
     <title>Find Air</title>
+
     <link href="/css/app.css" rel=stylesheet>
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
 </head>
 <body>
 @include('admin.adminMenu')
 
-<div class="container">
+
 @yield('content')
-</div>
+
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

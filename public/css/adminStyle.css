@@ -1,10 +1,47 @@
 html, body {
     height: 100%;
+width: 100%;
+
+
+}
+
+#menu {padding-left: 50px;
+    position: fixed;
+    width: 270px;
     height: 100%;
-    background-color: #d0e9c6;
+    font-family: 'Cabin', sans-serif;
+    font-size: 20px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0.9) 100%);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+
 }
-#list{
-    border: red solid 2px;
+
+#menu h2 {
+    color: black;
+}
+
+#list {
+    background-color: #afd9ee;
+    padding-left: 300px;
+    color: black;
+    font-family: 'Cabin', sans-serif;
+}
+#menu a{
+    color: black;
+}
+#menu span {
+    color: #880000;
+}
+#page-content {
+    height: 100%;
+    background-color: #afd9ee;
+    padding-left: 300px;
+    color: black;
+    font-family: 'Cabin', sans-serif;
+}
+#search{
+    position: fixed;
+    align-content: center;
+}
 
 
-}
