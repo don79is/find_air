@@ -67,6 +67,5 @@ class FFAirlinesSeeder extends Seeder
             throw new Exception($e);
         }
         DB::commit();
-
     }
 }

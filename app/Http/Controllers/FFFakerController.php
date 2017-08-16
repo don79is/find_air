@@ -10,7 +10,7 @@ use Illuminate\Routing\Controller;
 
 class FFFakerController extends Controller {
 
-    public function generateAirports($count = 100)
+    public function generateAirports($count = 200)
     {
         function getRandomString($length = 3) {
             $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';

@@ -1,11 +1,11 @@
 html, body {
     height: 100%;
-width: 100%;
-
+    width: 100%;
 
 }
 
-#menu {padding-left: 50px;
+#menu {
+    padding-left: 50px;
     position: fixed;
     width: 270px;
     height: 100%;
@@ -21,17 +21,21 @@ width: 100%;
 }
 
 #list {
+    height: 100%;
     background-color: #afd9ee;
     padding-left: 300px;
     color: black;
     font-family: 'Cabin', sans-serif;
 }
-#menu a{
+
+#menu a {
     color: black;
 }
+
 #menu span {
     color: #880000;
 }
+
 #page-content {
     height: 100%;
     background-color: #afd9ee;
@@ -39,7 +43,8 @@ width: 100%;
     color: black;
     font-family: 'Cabin', sans-serif;
 }
-#search{
+
+#search {
     position: fixed;
     align-content: center;
 }
