@@ -24,7 +24,8 @@ class FFSearchController extends Controller
         $conf['destination'] = FFAirports::pluck('name', 'id')->toArray();
         $conf['time'] = Carbon::now()->format('Y-m-d');
 //        dd($conf);
-        $this->getFlights();
+        $conf['flights'] = $this->getFlights();
+
         return view('welcome', $conf);
     }
 
@@ -41,6 +42,7 @@ class FFSearchController extends Controller
             where('destination_id', $data['destination'])->
             where('departure', '<=', $data['departure'] . '23;59;59')
                 ->get()->toArray();
+            dd($data);
         }
 
     }

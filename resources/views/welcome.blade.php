@@ -11,58 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
     <!-- Styles -->
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 100;
-            height: 100vh;
-            margin: 0;
-        }
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-        .full-height {
-            height: 100vh;
-        }
-
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-
-        .content {
-            text-align: center;
-        }
-
-        .title {
-            font-size: 84px;
-        }
-
-        .links > a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .m-b-md {
-            margin-bottom: 30px;
-        }
-    </style>
 </head>
 <body>
 <div class="flex-center position-ref full-height">
@@ -76,31 +26,31 @@
             @endif
         </div>
     @endif
+    <div id="search">
+        <h2>Search</h2>
+        <div class="form-group">
+            {!! Form::open(['url' => $rec,'method'=> 'GET']) !!}
+            {{Form::label('origin', 'From')}}
+            {{Form::select('origin',$origin)}}
 
-    <h2>Search</h2>
-    <div class="form-group">
-        {!! Form::open(['url' => $rec,'method'=> 'GET']) !!}
-        {{Form::label('origin', 'From')}}
-        {{Form::select('origin',$origin)}}
-
-        {{Form::label('destination', 'To')}}
-        {{Form::select('destination',$destination)}}<br>
+            {{Form::label('destination', 'To')}}
+            {{Form::select('destination',$destination)}}<br>
 
 
-        {{Form::label('departure', 'Time')}}
-        {{Form::datetime('departure', $time)}}<br>
+            {{Form::date('departure', $time)}}
 
-        {{Form::submit('Search')}}
-        {{--{{Form::label('arrival', 'Arrival')}}--}}
-        {{--{{Form::datetime('arrival', $arrival)}}--}}
+            {{Form::submit('Search')}}
+            {{--{{Form::label('arrival', 'Arrival')}}--}}
+            {{--{{Form::datetime('arrival', $arrival)}}--}}
 
+        </div>
+        @if(isset($flights))
+            @foreach($flights as $key=> $value )
+                {{$key}}
+
+            @endforeach
+        @endif
     </div>
-    @if(isset($flights))
-        @foreach($flights as $key )
-            {{$key}}
-
-        @endforeach
-    @endif
 </div>
 </body>
 </html>
