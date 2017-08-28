@@ -23,7 +23,7 @@ class FFFlightsController extends Controller
         $conf['ignore'] = ['created_at', 'updated_at', 'deleted_at', 'id', 'count', 'airline_id', 'destination_id', 'origin_id' ];
 
         $conf['rec'] = route('app.flights.create');
-
+        $conf['paginate'] = FFFlights::paginate(20)->toArray();
         $conf['create'] = 'app.flights.create';
         $conf['edit'] = 'app.flights.edit';
         $conf['delete'] = 'app.flights.delete';

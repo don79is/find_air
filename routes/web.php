@@ -11,12 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::group(['prefix' => 'search'], function () {
-    Route::get('/', ['as' => 'app.search.index', 'uses' => 'FFSearchController@adminIndex']);
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::get('/',['as' => 'app.search.index', 'uses' => 'FFSearchController@adminIndex']);
+
 Route::group(['prefix' => 'generate'], function () {
     Route::get('/airports', ['uses' => 'FFFakerController@generateAirports']);
     Route::get('/flights', ['uses' => 'FFFakerController@generateFlights']);

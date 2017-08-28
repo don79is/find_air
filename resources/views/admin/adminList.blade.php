@@ -60,7 +60,9 @@
         @else {{'No records'}}
 
         @endif
+
     </div>
+
 @endsection
 
 @section('scripts')

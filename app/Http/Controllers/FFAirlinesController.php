@@ -22,6 +22,7 @@ class FFAirlinesController extends Controller
         $conf['edit'] = 'app.airlines.edit';
         $conf['delete'] = 'app.airlines.delete';
 
+//        dd($conf);
         return view('admin.adminList', $conf);
     }
 

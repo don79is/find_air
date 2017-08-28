@@ -20,29 +20,27 @@ class FFSearchController extends Controller
         $conf['ignore'] = ['created_at', 'updated_at', 'deleted_at', 'id', 'count', 'airline_id', 'destintation_id', 'orgin_id'];
         $conf['rec'] = (route('app.search.index'));
 
-
+        $conf['origin'] = FFAirports::pluck('name', 'id')->toArray();
         $conf['destination'] = FFAirports::pluck('name', 'id')->toArray();
         $conf['time'] = Carbon::now()->format('h:m:I');
-//        dd($conf);
-        $this->getFlights();
-        return view('search', $conf);
+
+
+        $data = request()->all();
+
+        if($data){
+            $conf['flights']= $this->getFlights($data);
+dd($conf);
+        };
+
+        return view('welcome', $conf);
     }
 
-    public function getFlights()
-    {
-        $data = request()->all();
-        if (isset($data)) {
-            return ('fuck this');
-        } else {
 
-
-            $conf['flights'] = FFFlights::
-            where('origin_id', $data['origin'])->
-            where('destination_id', $data['destination'])->
-            where('departure', '<=', $data['departure'] . '23;59;59')
-                ->get()->toArray();
-        }
-
+    public function getFlights($data){
+        return FFFlights::where('origin_id', $data['from'])
+            ->where('destination_id',$data['to'] )
+            ->where('departure','>=', $data['date'].' 23:59:59')
+            ->get()->toArray();
     }
 
     /**
