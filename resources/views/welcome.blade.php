@@ -9,16 +9,25 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
+    <link href="/css/prettify-1.0.css" rel="stylesheet">
+    <link href="/css/base.css" rel="stylesheet">
+    <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+
+    <link href="/css/app.css" rel=stylesheet>
+    <link href="/css/adminStyle.css" rel=stylesheet>
     <!-- Styles -->
     <style>
         html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Baloo Bhaijaan', cursive;
-            font-weight: 100;
-            height: 100vh;
-            margin: 0;
+            /*background-color: #fff;*/
+            /*color: #636b6f;*/
+
+            /*font-weight: 100;*/
+            /*height: 100vh;*/
+            /*margin: 0;*/
         }
 
         .full-height {
@@ -48,18 +57,12 @@
         .title {
             font-size: 84px;
         }
-
-        .links > a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
+        button, html input[type=button], input[type=reset], input[type=submit]{
+            margin-bottom: 100px;
         }
 
         .m-b-md {
+            font-family: 'Baloo Bhaijaan', cursive;
             margin-bottom: 30px;
         }
     </style>
@@ -103,8 +106,8 @@
 
             @if(isset($flights))
                 {{--@if(sizeof($flights)>0)--}}
-                <table class="table table-bordered">
-                    <thead>
+                <table class="table table-bordered ">
+                    <thead class="thead-inverse">
                     <tr>
                         @foreach($flights[0] as $key => $value)
                             @if(!in_array($key, $ignore))
@@ -121,14 +124,13 @@
                                     <td>
                                         {{$value['name']}}(Airport),
                                         {{$value['city']}}(City),
-                                        {{$value['country_id']}}(Country code)
+
                                     </td>
                                 @elseif($key == 'destination_airport')
                                     <td>
                                         {{$value['name']}}(Airport),
                                         {{$value['city']}}(City),
-                                        {{$value['country_id']}}(Country code)
-                                    </td>
+
                                 @elseif($key == 'airline')
                                     <td>{{$value['name']}}</td>
                                 @else
@@ -150,4 +152,13 @@
 
 </div>
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+{{--<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>--}}
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 </html>
