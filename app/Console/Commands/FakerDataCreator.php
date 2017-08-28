@@ -61,7 +61,7 @@ class FakerDataCreator extends Command
         $faker = Factory::create();
         for ($i = 0; $i < 200; $i++) {
             FFAirports::create([
-                'id' => getRandomString(),
+                'id' => $this->getRandomString(),
                 'name' => $faker->company,
                 'city' => $faker->city,
                 'country_id' => FFCountries::all()->random()->id,
