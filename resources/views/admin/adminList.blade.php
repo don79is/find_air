@@ -10,9 +10,10 @@
             <table class="table">
                 <thead class="thead-inverse">
                 <tr>
-                    @foreach($list[0] as $key => $value)
+
+                    @foreach($list['data'][0] as $key => $value)
                         @if(!in_array($key, $ignore))
-                            <th>{{$key}}</th>
+                            <th >{{$key}}</th>
                         @endif
                     @endforeach
                     @if(isset($edit))
@@ -23,7 +24,7 @@
                     @endif
                 </tr>
                 </thead>
-                @foreach($list as $key => $record)
+                @foreach($list['data'] as $key => $record)
                     <tr id="{{$record['id']}}">
                         @foreach($record as $key => $value)
                             @if(!in_array($key, $ignore))
@@ -57,6 +58,9 @@
                     </tr>
                 @endforeach
             </table>
+            <nav aria-label="Page navigation example">
+                {!! $paginate->links()!!}
+            </nav>
         @else {{'No records'}}
 
         @endif
