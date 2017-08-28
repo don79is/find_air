@@ -8,9 +8,11 @@
     <link href="/css/app.css" rel=stylesheet>
 </head>
 <body>
-@include('admin.adminMenu')
 <div class="container">
+@include('admin.adminMenu')
+
 @yield('content')
+
 </div>
 
 {{--@yield('form')--}}

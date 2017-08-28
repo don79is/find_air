@@ -14,7 +14,8 @@ class FFAirlinesController extends Controller
      */
     public function adminIndex()
     {
-        $conf['list'] = FFAirlines::get()->toArray();
+        $conf['list'] = FFAirlines::paginate(15)->toArray();;
+        $conf['paginate'] = FFAirlines::paginate(15);
         $conf ['rec'] = route('app.airlines.create');
         $conf ['title'] = ('Airlines');
         $conf['ignore'] = ['updated_at', 'created_at', 'deleted_at'];
@@ -79,7 +80,6 @@ class FFAirlinesController extends Controller
         $conf['id'] = $id;
         $conf['title'] = $id;
         $conf['rec'] = route('app.airlines.edit', $id);
-        $conf['back'] = 'app.airlines.index';
         $conf['record'] = FFAirlines::find($id)->toArray();
 
         return view('admin.airlines.form', $conf);

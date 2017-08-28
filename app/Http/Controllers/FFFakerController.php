@@ -23,7 +23,7 @@ class FFFakerController extends Controller {
         $faker = Factory::create();
         for ($i = 0; $i < $count; $i++) {
             FFAirports::create([
-                'id' => getRandomString(),
+                'id' => $this->getRandomString(),
                 'name' => $faker->company,
                 'city' => $faker->city,
                 'country_id' => FFCountries::all()->random()->id,

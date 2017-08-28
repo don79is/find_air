@@ -14,10 +14,11 @@ class FFAirportsController extends Controller {
 	 */
 	public function adminIndex()
 	{
-        $conf['list'] = FFAirports::get()->toArray();
+        $conf['list'] =FFAirports::paginate(15)->toArray();;
+        $conf['paginate'] =FFAirports::paginate(15);
         $conf['ignore'] = ['updated_at','created_at','deleted_at'];
         $conf ['rec'] = route('app.airports.create');
-        $conf ['title'] = trans('app.airports');
+        $conf ['title'] = ('Airports');
         $conf['show'] = 'app.airports.show';
         $conf['create'] = 'app.airports.create';
         $conf['edit'] = 'app.airports.edit';
@@ -36,6 +37,7 @@ class FFAirportsController extends Controller {
 	{
         $conf['title'] = 'New Airport';
         $conf['country'] = FFCountries::pluck('name', 'id')->toArray();
+        $conf['city'] = FFAirports::pluck('city', 'id')->toArray();
         $conf['rec'] = route('app.airports.create');
         $conf['back'] = 'app.airports.index';
         return view('admin.airports.form', $conf);
@@ -78,9 +80,14 @@ class FFAirportsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function adminEdit($id)
 	{
-		//
+        $conf['id'] = $id;
+        $conf['title'] = $id;
+        $conf['rec'] = route('app.airports.edit', $id);
+        $conf['record'] = FFAirports::find($id)->toArray();
+
+        return view('admin.airports.form', $conf);
 	}
 
 	/**
@@ -90,9 +97,13 @@ class FFAirportsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function adminUpdate($id)
 	{
-		//
+        $data = request()->all();
+        $record = FFAirports::find($id);
+        $record->update($data);
+
+        return redirect(route('app.airports.index'));
 	}
 
 	/**

@@ -17,7 +17,7 @@ class FFSearchController extends Controller
     public function adminIndex()
     {
         $conf ['title'] = ('Flights');
-        $conf['ignore'] = ['created_at', 'updated_at', 'deleted_at', 'id', 'count', 'airline_id', 'destintation_id', 'orgin_id'];
+        $conf['ignore'] = ['created_at', 'updated_at', 'deleted_at', 'id', 'count', 'airline_id', 'destination_id', 'origin_id'];
         $conf['rec'] = (route('app.search.index'));
 
         $conf['origin'] = FFAirports::pluck('name', 'id')->toArray();
@@ -29,7 +29,7 @@ class FFSearchController extends Controller
 
         if($data){
             $conf['flights']= $this->getFlights($data);
-dd($conf);
+
         };
 
         return view('welcome', $conf);

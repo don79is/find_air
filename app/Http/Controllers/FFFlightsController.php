@@ -17,13 +17,15 @@ class FFFlightsController extends Controller
      */
     public function adminIndex()
     {
-        $conf['list'] = FFFlights::get()->toArray();
+        $conf['list'] = FFFlights::paginate(15)->toArray();;
+
+
 
         $conf ['title'] = ('Flights');
         $conf['ignore'] = ['created_at', 'updated_at', 'deleted_at', 'id', 'count', 'airline_id', 'destination_id', 'origin_id' ];
 
         $conf['rec'] = route('app.flights.create');
-        $conf['paginate'] = FFFlights::paginate(20)->toArray();
+        $conf['paginate'] = FFFlights::paginate(15);
         $conf['create'] = 'app.flights.create';
         $conf['edit'] = 'app.flights.edit';
         $conf['delete'] = 'app.flights.delete';
@@ -46,7 +48,7 @@ class FFFlightsController extends Controller
         $conf['airline'] = FFAirlines::pluck('name', 'id')->toArray();
         $conf['departure'] = Carbon::now()->format('Y-m-d H:i');
         $conf['arrival'] = Carbon::now()->addDays(1)->format('Y-m-d H:i');
-        $conf['back'] = 'app.flights.index';
+
 
         return view('admin.flights.form', $conf);
     }
@@ -90,9 +92,14 @@ class FFFlightsController extends Controller
      * @param  int $id
      * @return Response
      */
-    public function edit($id)
+    public function adminEdit($id)
     {
-        //
+        $conf['id'] = $id;
+        $conf['title'] = $id;
+        $conf['rec'] = route('app.flights.edit', $id);
+        $conf['record'] = FFFlights::find($id)->toArray();
+dd($conf);
+        return view('admin.flights.form', $conf);
     }
 
     /**

@@ -13,7 +13,8 @@ class FFCountriesController extends Controller {
 	 */
 	public function adminIndex()
 	{
-	    $conf['list'] = FFCountries::get()->toArray();
+        $conf['list'] = FFCountries::paginate(15)->toArray();;
+        $conf['paginate'] = FFCountries::paginate(15);
 	    $conf['ignore'] = ['updated_at','created_at','deleted_at'];
         $conf ['rec'] = route('app.countries.create');
         $conf ['title'] = ('Countries');
@@ -31,9 +32,12 @@ class FFCountriesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function adminCreate()
 	{
-		//
+        $conf['title'] = 'New Countries';
+        $conf['rec'] = route('app.countries.create');
+        $conf['back'] = 'app.countries.index';
+        return view('admin.countries.form', $conf);
 	}
 
 	/**
@@ -42,9 +46,14 @@ class FFCountriesController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function adminStore()
 	{
-		//
+        $data = request()->all();
+        FFCountries::create([
+            'name' => $data['name'],
+            'id' => $data['id'],
+        ]);
+        return redirect(route('app.countries.index'));
 	}
 
 	/**
@@ -66,9 +75,14 @@ class FFCountriesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function adminEdit($id)
 	{
-		//
+        $conf['id'] = $id;
+        $conf['title'] = $id;
+        $conf['rec'] = route('app.countries.edit', $id);
+        $conf['record'] = FFCountries::find($id)->toArray();
+
+        return view('admin.countries.form', $conf);
 	}
 
 	/**
@@ -78,9 +92,13 @@ class FFCountriesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function adminUpdate($id)
 	{
-		//
+        $data = request()->all();
+        $record = FFCountries::find($id);
+        $record->update($data);
+
+        return redirect(route('app.countries.index'));
 	}
 
 	/**
@@ -90,9 +108,11 @@ class FFCountriesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function adminDestroy($id)
 	{
-		//
+        FFCountries::destroy($id);
+
+        return json_encode(["success" => true, "id" => $id]);
 	}
 
 }
