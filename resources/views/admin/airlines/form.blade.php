@@ -9,7 +9,7 @@
                 {{Form::label('name', 'Airline name')}}
                 {{Form::text('name', $record['name'])}}
             </div>
-            <a class="btn btn-primary" href="{{$back}}">Back</a>
+
             {{Form::submit(('Save'), ['class' => 'btn btn-success']) }}
         @else
             <h2>{{$title}}</h2>
@@ -17,7 +17,7 @@
                 {{Form::label('name', 'Airline name')}}
                 {{Form::text('name')}}
             </div>
-            <a class="btn btn-primary" href="{{$back}}">Back</a>
+
             {{Form::submit(('Save'), ['class' => 'btn btn-success']) }}
         @endif
     </div>
