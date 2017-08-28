@@ -33,7 +33,7 @@ html, body {
 }
 
 #menu span {
-    color: #880000;
+    color:black;
 }
 
 #page-content {
@@ -48,5 +48,12 @@ html, body {
     position: fixed;
     align-content: center;
 }
+.form{
 
+    height: 100%;
+    background-color: #afd9ee;
+    padding-left: 300px;
+    color: black;
+    font-family: 'Cabin', sans-serif;
 
+}
