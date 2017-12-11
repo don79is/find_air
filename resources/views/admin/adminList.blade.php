@@ -14,6 +14,7 @@
                     @foreach($list['data'][0] as $key => $value)
                         @if(!in_array($key, $ignore))
                             <th >{{$key}}</th>
+
                         @endif
                     @endforeach
                     @if(isset($edit))
@@ -26,6 +27,7 @@
                 </thead>
                 @foreach($list['data'] as $key => $record)
                     <tr id="{{$record['id']}}">
+
                         @foreach($record as $key => $value)
                             @if(!in_array($key, $ignore))
                                 @if($key == 'origin_airport')

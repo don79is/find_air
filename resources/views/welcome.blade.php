@@ -9,12 +9,14 @@
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" media="screen" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <link href="/css/prettify-1.0.css" rel="stylesheet">
     <link href="/css/base.css" rel="stylesheet">
-    <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <link href="//cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css"
+          rel="stylesheet">
 
 
     <link href="/css/app.css" rel=stylesheet>
@@ -22,7 +24,7 @@
     <!-- Styles -->
     <style>
         html, body {
-            /*background-color: #fff;*/
+            background-image: url("http://wallpapers-and-backgrounds.net/wp-content/uploads/2016/01/airplane-full-hd-wallpaper_1_1920x1200.jpg");
             /*color: #636b6f;*/
 
             /*font-weight: 100;*/
@@ -57,13 +59,55 @@
         .title {
             font-size: 84px;
         }
-        button, html input[type=button], input[type=reset], input[type=submit]{
+
+        button, html input[type=button], input[type=reset], input[type=submit] {
             margin-bottom: 100px;
         }
 
         .m-b-md {
+            color: white;
             font-family: 'Baloo Bhaijaan', cursive;
             margin-bottom: 30px;
+        }
+        select {
+            display: block;
+            height: 4rem;
+            width: 50%;
+            padding: .5rem .75rem;
+            font-size: 1.75rem;
+            line-height: 1.25;
+            color: #464a4c;
+            background-color: #fff;
+            background-image: none;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, .15);
+            border-radius: .25rem;
+            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+        }
+        input {
+            display: block;
+            height: 4rem;
+            width: 50%;
+            padding: .5rem .75rem;
+            font-size: 1.75rem;
+            line-height: 1.25;
+            color: #464a4c;
+            background-color: #fff;
+            background-image: none;
+            -webkit-background-clip: padding-box;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, .15);
+            border-radius: .25rem;
+            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
         }
     </style>
 </head>
@@ -79,77 +123,79 @@
             @endif
         </div>
     @endif
-        <div class="content">
-            <div class="title m-b-md">
-              Find Air
-            </div>
+    <div class="content">
 
+        <div class="page-content">
 
-            <div class="form-group">
+            <div class="container">
 
-                {!! Form::open(['method'=>'GET', 'url' => $rec]) !!}
+                <div class="title m-b-md">Find Air</div>
 
-                {{Form::label('from', 'From')}}
-                {{Form::select('from',$origin) }}
+                <form action="{{ route('app.search.index')}}" method="get">
+                    {{--{!! Form::open(['method'=>'GET', 'url' => $rec]) !!}--}}
 
-                {{Form::label('to', 'To')}}
-                {{Form::select('to',$destination)}}
+                    <div class="form-group">
+                        <label>Departure airport</label>
+                        {{Form::select('from',$origin) }}
+                    </div>
+                    <div class="form-group">
+                        <label>Arrival airport</label>
+                        {{Form::select('to',$destination)}}
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        {{Form::date('date', $time)}}
+                    </div>
 
-                {{Form::label('date', 'Date')}}
-                {{Form::date('date', $time)}}
+                    <button type="submit" class="btn btn-info">Search</button>
 
-            </div>
+                </form>
 
-            {{Form::submit('Search') }}
-
-            {!! Form::close() !!}
-
-            @if(isset($flights))
-                {{--@if(sizeof($flights)>0)--}}
-                <table class="table table-bordered ">
-                    <thead class="thead-inverse">
-                    <tr>
-                        @foreach($flights[0] as $key => $value)
-                            @if(!in_array($key, $ignore))
-                                <th>{{$key}}</th>
-                            @endif
-                        @endforeach
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($flights as $flight)
-                        @foreach($flight as $key => $value)
-                            @if(!in_array($key, $ignore))
-                                @if($key == 'origin_airport')
-                                    <td>
-                                        {{$value['name']}}(Airport),
-                                        {{$value['city']}}(City),
-
-                                    </td>
-                                @elseif($key == 'destination_airport')
-                                    <td>
-                                        {{$value['name']}}(Airport),
-                                        {{$value['city']}}(City),
-
-                                @elseif($key == 'airline')
-                                    <td>{{$value['name']}}</td>
-                                @else
-                                    <td>{{$value}}</td>
+                @if(isset($flights))
+                    {{--@if(sizeof($flights)>0)--}}
+                    <table class="table table-bordered ">
+                        <thead class="thead-inverse">
+                        <tr>
+                            @foreach($flights[0] as $key => $value)
+                                @if(!in_array($key, $ignore))
+                                    <th>{{$key}}</th>
                                 @endif
-                            @endif
+                            @endforeach
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($flights as $flight)
+                            @foreach($flight as $key => $value)
+                                @if(!in_array($key, $ignore))
+                                    @if($key == 'origin_airport')
+                                        <td>
+                                            {{$value['name']}}(Airport),
+                                            {{$value['city']}}(City),
+
+                                        </td>
+                                    @elseif($key == 'destination_airport')
+                                        <td>
+                                            {{$value['name']}}(Airport),
+                                            {{$value['city']}}(City),
+
+                                    @elseif($key == 'airline')
+                                        <td>{{$value['name']}}</td>
+                                    @else
+                                        <td>{{$value}}</td>
+                                    @endif
+                                @endif
+                            @endforeach
                         @endforeach
-                    @endforeach
-                    </tbody>
-                </table>
+                        </tbody>
+                    </table>
 
 
-            @endif
+                @endif
 
 
+            </div>
         </div>
-
-
-
+    </div>
 </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
